@@ -57,8 +57,7 @@ test('Upload placeholder photo - successful', async ({ request }) => {
 
   console.log('Response status:', response.status());
   console.log(await response.text());
-
-  expect(response.ok()).toBeTruthy();
+  expect(response.status()).toBe(200);
 });
 
 test('Upload placeholder photo - Unauthorized', async ({ request }) => {
@@ -111,5 +110,6 @@ test('Upload placeholder photo - Not Found', async ({ request }) => {
   console.log(await response.text());
   expect(response.status()).toBe(404);
 });
+
 
 });
