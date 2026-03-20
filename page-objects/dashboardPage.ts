@@ -23,7 +23,7 @@ export class DashboardPage {
 
   async openFolder(folderName: string)  {
    const testFolderLocator = this.page.locator('div.icon-height.d-flex.flex-column.justify-content-between', {
-      hasText: 'test photo'
+      hasText: folderName
     });
   await testFolderLocator.waitFor({ state: 'visible', timeout: 10000 });
   await testFolderLocator.click();

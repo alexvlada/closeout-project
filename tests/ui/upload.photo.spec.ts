@@ -25,7 +25,7 @@ test('Upload photo without hardhat', async ({ page }) => {
   await dashboard.openSideMenu('Control Panel');
   await dashboard.openProject('875');
   await dashboard.openSite('Test Site 7');
-  await dashboard.openFolder('test folder');
+  await dashboard.openFolder('test photo');
   await dashboard.clickOnUploadButton();
   const uniqueImage = await createUniqueImage('no-hardhat.png');
   await project.uploadPhoto(uniqueImage);
@@ -50,7 +50,7 @@ test('Upload photo with hardhat', async ({ page }) => {
   await dashboard.openSideMenu('Control Panel');
   await dashboard.openProject('875');
   await dashboard.openSite('Test Site 7');
-  await dashboard.openFolder('test folder');
+  await dashboard.openFolder('test photo');
   await dashboard.clickOnUploadButton();
   const uniqueImage = await createUniqueImage('hardhat.png');
   await project.uploadPhoto(uniqueImage);
@@ -76,7 +76,7 @@ test('Upload already existing photo', async ({ page }) => {
   await dashboard.openSideMenu('Control Panel');
   await dashboard.openProject('875');
   await dashboard.openSite('Test Site 7');
-  await dashboard.openFolder('test folder');
+  await dashboard.openFolder('test photo');
   await dashboard.clickOnUploadButton();
   await project.uploadPhoto('no-hardhat.png');
   await project.clickOnDoneButton();
