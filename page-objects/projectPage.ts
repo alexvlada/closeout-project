@@ -20,11 +20,22 @@ export class ProjectPage {
   }
 
   async getValidationResult(result: string) {
-     await this.page.waitForLoadState('networkidle');     
-     const rejectedIcon = this.page.locator('img[alt="'+result+'"]').first();
-     await rejectedIcon.waitFor({ state: 'visible', timeout: 10000 }); 
-     await expect(rejectedIcon).toBeVisible();
-     
+   
+    const firstCheckbox: Locator = this.page.locator('p-checkbox').first();
+    let icon: Locator;
+    
+    
+    if (result === 'accepted') {
+      icon = firstCheckbox.locator('xpath=..//img[@alt="accepted" or alt="rejected"]');
+    } else {
+      icon = firstCheckbox.locator('xpath=..//img[alt="accepted" or @alt="rejected"]');
+    }
+   
+    await icon.waitFor({ state: 'visible', timeout: 30000 });
+    const alt = await icon.getAttribute('alt');
+    console.log('Validation result:', alt);
+
+    expect(alt).toBe(result);
   }
 
   async getAlertMessage(message: string) {
